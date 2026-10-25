@@ -1,0 +1,32 @@
+# Conda environment for the hyp3-srg bundle (CPU build and run): the conda-forge set the 2026-10-25 check
+# solved with. Create it with: conda env create -f environment.yml
+name: hyp3-srg-bundle
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12             # hyp3-srg supports 3.10 to 3.13; checked with 3.12
+  - pip
+  # To build and install the hyp3_srg package and run its tests (hyp3-srg/environment.yml)
+  - setuptools
+  - setuptools_scm          # hyp3_srg takes its version from the git tag of the hyp3-srg submodule
+  - wheel
+  - git                     # setuptools_scm reads the version with git
+  - pytest
+  - pytest-console-scripts
+  - pytest-cov
+  # To run (hyp3-srg/environment.yml)
+  - asf_search>=10.0.5
+  - hyp3_sdk
+  - hyp3lib>=3,<4
+  - matplotlib
+  - s1_orbits
+  # To build the SRG programs in srg/ (the builder stage of hyp3-srg/Dockerfile gets these from apt)
+  - gcc
+  - gfortran
+  - make
+  - fftw                    # single-precision libfftw3f; conda-forge ships only the shared library
+  # Called by the SRG scripts at run time
+  - wget                    # srg/DEM/cop_dem.py downloads the Copernicus DEM tiles with wget
+  # Left out on purpose: CUDA. The GPU build (hyp3-srg/Dockerfile.gpu, --gpu) is not needed for small
+  # areas; this file covers the CPU path only. ruff and mypy (hyp3-srg/requirements-static.txt) are
+  # linters for development and are not needed to build, test or run.

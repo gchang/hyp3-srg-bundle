@@ -1,0 +1,6 @@
+[submodule "hyp3-srg"]
+	path = hyp3-srg
+	url = https://github.com/ASFHyP3/hyp3-srg.git
+[submodule "srg"]
+	path = srg
+	url = https://github.com/gchang/hyp3-srg-backprojection.git
