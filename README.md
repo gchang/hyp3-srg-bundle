@@ -9,7 +9,7 @@ git clone --recurse-submodules https://github.com/gchang/hyp3-srg-bundle.git
 | Submodule | Repository | Commit | Role |
 |---|---|---|---|
 | `hyp3-srg` | https://github.com/ASFHyP3/hyp3-srg (tag `v0.10.2`) | c0b9c3946778dcddd3598361122c958cf9d07f41 | the plugin: downloads, DEM, workflow, product zip (`python -m hyp3_srg`) |
-| `srg` | https://github.com/gchang/hyp3-srg-backprojection | cf590ac565d8ca16d786b1e7f3afce6aa1adb14f | the SRG processor (ASFHyP3/srg `v0.4.3` with three fixes, see its `MAAP_CHANGES.md`) |
+| `srg` | https://github.com/gchang/hyp3-srg-backprojection | 1ed982bbbb9d9666958dee877627ba23480dd45d | the SRG processor (ASFHyP3/srg `v0.4.3` with three fixes, see its `MAAP_CHANGES.md`) |
 
 `hyp3-srg/Dockerfile` builds the processor from ASFHyP3/srg `v0.4.3`. The `srg` submodule is that release with three small fixes: work-folder paths longer than about 60 characters no longer crash the processor, snaphu compiles with GCC 15 and later, and a failed processing step now stops the workflow instead of letting it go on with empty images. Results are unchanged.
 
